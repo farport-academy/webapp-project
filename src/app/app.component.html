@@ -1,3 +1,9 @@
-<h1> Hello Webapp </h1>
-
-<app-layout/>
+<app-layout>
+  <ng-container layout-header> header </ng-container>
+  <ng-container layout-nav>
+    <a [routerLink]="'/'">home</a>
+    <a [routerLink]="'/about'">about</a>
+  </ng-container>
+  <router-outlet />
+  <ng-container layout-footer> footer </ng-container>
+</app-layout>

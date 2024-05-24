@@ -1,4 +1,22 @@
-<p>layout works!</p>
 
 
-<b> sono dentro il componente layout</b>
+<header>
+    <ng-content select="[layout-header]"></ng-content>
+    <nav>
+        <ng-content select="[layout-nav]"></ng-content>
+    </nav>
+</header>
+<main>
+    <ng-content></ng-content>
+</main>
+<footer>
+    &copy;{{currentYear}}<ng-content select="[layout-footer]"></ng-content>
+</footer>
+<!-- <input (input)="showInput($event)">
+<form>
+    <input readonly [(ngModel)]="count" [ngModelOptions]="{standalone: true}">
+    <button (click)="add()">Aggiungi</button>
+    <button (click)="remove()">Rimuovi</button>
+</form>
+
+<b> sono dentro il componente layout</b> -->
