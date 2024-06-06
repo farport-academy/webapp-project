@@ -1,0 +1,8 @@
+@for(recipe of recipes | async; track recipe.id){
+<article class="recipe">
+  <a [routerLink]="[recipe.id]">
+    <h1>{{ recipe.name }}</h1>
+    calorie: <app-semaphore [amount]="recipe.caloriesPerServing" />
+  </a>
+</article>
+}

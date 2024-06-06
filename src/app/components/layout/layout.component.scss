@@ -35,12 +35,12 @@ nav{
 
 main{
     grid-area: main;
-    background-color: green;
+    // background-color: green;
     padding: $base-spacing;
 }
 
 footer{
     @include flex-element;
     grid-area:footer;
-    background: yellow
+    background: goldenrod
 }

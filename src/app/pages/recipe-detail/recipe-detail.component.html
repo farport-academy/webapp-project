@@ -1,0 +1,26 @@
+@if( recipe | async; as recipe){
+    <article class="recipe">
+        <h1>{{ recipe.name }}</h1>
+        calorie: <app-semaphore [amount]="recipe.caloriesPerServing" />
+      
+        <div class="recipe_intro">
+          <div>
+            <img [src]="recipe.image" />
+          </div>
+          <div class="recipe_instructions">
+            <h2>Ingredienti</h2>
+            <ul>
+              @for (ingredient of recipe.ingredients; track $index){
+              <li>{{ ingredient }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+        <h3>Istruzioni</h3>
+        <ol>
+          @for(instruction of recipe.instructions; track $index ){
+          <li>{{ instruction }}</li>
+          }
+        </ol>
+      </article>
+}
