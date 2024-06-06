@@ -3,8 +3,6 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-semaphore',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './semaphore.component.html',
   styleUrl: './semaphore.component.scss'
 })

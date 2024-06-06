@@ -1,0 +1,20 @@
+@if(windowWidth >= breakpoint){
+    <div class="menu_desktop">
+        @for(item of menu; track $index){
+            <a [routerLink]="item.url">{{item.label}}</a>
+        }
+    </div>
+} @else {
+    <span class="hamburger" (click)="toggleMenu()">
+        menu
+    </span>
+    @if(menuVisible){
+        <div class="menu_mobile">
+            @for(item of menu; track $index){
+                <a [routerLink]="item.url" (click)="toggleMenu()">{{item.label}}</a>
+            }
+        </div>
+    }
+
+}
+

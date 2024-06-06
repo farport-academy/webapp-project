@@ -1,3 +1,4 @@
+<app-button [url]="['../']"> torna alla lista </app-button>
 @if( recipe | async; as recipe){
     <article class="recipe">
         <h1>{{ recipe.name }}</h1>
@@ -5,7 +6,7 @@
       
         <div class="recipe_intro">
           <div>
-            <img [src]="recipe.image" />
+            <img [ngSrc]="recipe.image" [width]="imageSizes.width" [height]="imageSizes.height" priority/>
           </div>
           <div class="recipe_instructions">
             <h2>Ingredienti</h2>

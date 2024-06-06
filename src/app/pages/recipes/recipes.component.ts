@@ -5,11 +5,10 @@ import { Observable, map } from 'rxjs';
 import { SemaphoreComponent } from '../../components/semaphore/semaphore.component';
 import { Recipe } from '../../models/recipe';
 import { RouterModule } from '@angular/router';
+import { ComponentsModule } from '../../components/components.module';
 
 @Component({
   selector: 'app-recipes',
-  standalone: true,
-  imports:[CommonModule, SemaphoreComponent,RouterModule],
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.scss'
 })

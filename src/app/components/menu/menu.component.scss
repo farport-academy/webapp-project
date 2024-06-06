@@ -1,0 +1,53 @@
+.menu{
+    &_desktop{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    &_mobile{
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        top:80px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 80px - 4rem);
+        padding: 2rem;
+        z-index: 2;
+        background-color: white;
+        a {
+            padding: 1rem 0 ;
+        }
+    }
+}
+
+.hamburger{
+    $color: black;
+    $height: .25rem;
+    $width: 2rem;
+    height: $height;
+    width: $width;
+    display: block;
+    position: relative;
+    text-indent: -9999px;
+    background-color: $color;
+    cursor: pointer;
+    &::before{
+        content: "";
+        position: absolute;
+        left: 0;
+        top: ($width / 3) * -1;
+        height: $height;
+        width: $width;
+        background-color: $color;
+    }
+    &::after{
+        content: "";
+        position: absolute;
+        left: 0;
+        top: ($width / 3);
+        height: $height;
+        width: $width;
+        background-color: $color;
+    }
+}
