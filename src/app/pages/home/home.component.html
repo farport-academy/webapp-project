@@ -1,73 +1,52 @@
 <h1>Home</h1>
 
 <p>
-  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error fugiat
-  corporis fuga odio architecto quam aspernatur aliquam, corrupti voluptas, non
-  labore id laboriosam. Quo dolorem laboriosam maxime ad recusandae a.
+  Lorem ipsum dolor <i appFormat>100000.24455645</i>
+    <b appHighlight color="green" tooltip="testo del tooltip">sit amet consectetur</b
+  >, adipisicing elit. Error fugiat corporis fuga odio architecto quam
+  aspernatur aliquam, corrupti voluptas, non labore id laboriosam. Quo dolorem
+  laboriosam maxime ad recusandae a.
 </p>
 
 @if(a > b){
-    <div>{{ a }} è maggiore di {{ b }}</div>
+<div>{{ a }} è maggiore di {{ b }}</div>
 } @else if (b > a){
-    {{ a }} è minore di {{ b }}
+{{ a }} è minore di {{ b }}
 } @else {
-    {{ a }} è uguale ad {{ b }}
+{{ a }} è uguale ad {{ b }}
 }
 
-<div *ngIf="a > b; else notMajor">
-    {{ a }} è maggiore di {{ b }}
+<div appHighlight>
+  <div *ngIf="a > b; else notMajor">{{ a }} è maggiore di {{ b }}</div>
+  <ng-template #notMajor>
+    <div *ngIf="b > a; else notMajorSub">{{ a }} è minore di {{ b }}</div>
+    <ng-template #notMajorSub> {{ a }} è uguale ad {{ b }} </ng-template>
+  </ng-template>
 </div>
-<ng-template #notMajor>
-    <div *ngIf="b > a; else notMajorSub">
-    {{ a }} è minore di {{ b }}
-    </div>
-    <ng-template #notMajorSub>
-        {{ a }} è uguale ad {{ b }}
-    </ng-template>
-</ng-template>
 
+@for( item of taskList; track $index; let count = $count, first= $first, last=
+$last, odd = $odd ){
 
-@for( 
-    item of taskList; 
-    track $index; 
-    let count = $count,
-    first= $first,
-    last= $last,
-    odd = $odd
-    ){
-
-    <div style="display: block" [ngStyle]="{'background-color': odd ? 'red': 'transparent'}" >
-        {{ item.title }} {{$index}} {{count}} {{first}} {{last}}
-        @switch (item.done) {
-            @case (true) {
-                ✅
-            }
-            @default {
-                ❎
-            }
-        }
-    </div>
+<div
+  style="display: block"
+  [ngStyle]="{ 'background-color': odd ? 'red' : 'transparent' }"
+>
+  {{ item.title }} {{ $index }} {{ count }} {{ first }} {{ last }}
+  @switch (item.done) { @case (true) { ✅ } @default { ❎ } }
+</div>
 } @empty {
-    <div style="display: block;">
-        Non ci sono risultati
-    </div>
+<div style="display: block">Non ci sono risultati</div>
 }
 
 <div *ngIf="taskList.length; else noItems">
-    <ul>
-        <li *ngFor="let item of taskList; trackBy: trackById">
-            {{item.title}}
-            <span [ngSwitch]="item.done">
-                <b *ngSwitchCase="true">
-                    ✅
-                </b>
-                <b *ngSwitchDefault>
-                    ❎
-                </b>
-            </span>
-        </li>
-    </ul>
+  <ul>
+    <li *ngFor="let item of taskList; trackBy: trackById">
+      {{ item.title }}
+      <span [ngSwitch]="item.done">
+        <b *ngSwitchCase="true"> ✅ </b>
+        <b *ngSwitchDefault> ❎ </b>
+      </span>
+    </li>
+  </ul>
 </div>
-<ng-template #noItems>
-    non ci sono elementi
-</ng-template>
+<ng-template #noItems> non ci sono elementi </ng-template>

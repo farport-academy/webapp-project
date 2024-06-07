@@ -6,12 +6,16 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ButtonComponent } from './button/button.component';
 import { MenuComponent } from './menu/menu.component';
+import { FormatDirective } from './directives/format.directive';
+import { HighlightDirective } from './directives/highlight.directive';
 
 const components = [
   LayoutComponent,
   SemaphoreComponent,
   ButtonComponent,
-  MenuComponent
+  MenuComponent,
+  HighlightDirective,
+  FormatDirective
 ]
 
 @NgModule({

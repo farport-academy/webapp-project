@@ -11,7 +11,7 @@ const components = [
   AboutComponent,
   HomeComponent,
   RecipesComponent,
-  RecipeDetailComponent
+  RecipeDetailComponent,
 ]
 @NgModule({
   declarations:components ,
