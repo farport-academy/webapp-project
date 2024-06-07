@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { SemaphoreComponent } from '../../components/semaphore/semaphore.component';
+import { SemaphoreComponent } from '../../../shared/components/semaphore/semaphore.component';
 import { Recipe } from '../../models/recipe';
 import { RouterModule } from '@angular/router';
-import { ComponentsModule } from '../../components/components.module';
+import { ComponentsModule } from '../../../shared/shared.module';
 
 @Component({
   selector: 'app-recipes',

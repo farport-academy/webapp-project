@@ -5,8 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/internal/operators/map';
 import { Recipe } from '../../models/recipe';
-import { SemaphoreComponent } from '../../components/semaphore/semaphore.component';
-import { ComponentsModule } from '../../components/components.module';
+import { SemaphoreComponent } from '../../../shared/components/semaphore/semaphore.component';
+import { ComponentsModule } from '../../../shared/shared.module';
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',

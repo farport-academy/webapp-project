@@ -4,7 +4,7 @@ import {
   Input,
   OnInit
 } from '@angular/core';
-import { EssentiaDirective } from './essentialDirective';
+import { EssentiaDirective } from '../core/essentialDirective';
 
 @Directive({
   selector: '[appHighlight]',

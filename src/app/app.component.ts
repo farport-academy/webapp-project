@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { LayoutComponent } from './components/layout/layout.component';
-import { ComponentsModule } from './components/components.module';
-import { MenuItem } from './models/menu';
+import { LayoutComponent } from './shared/components/layout/layout.component';
+import { ComponentsModule } from './shared/shared.module';
+import { MenuItem } from './shared/models/menu';
 
 @Component({
   selector: 'app-root',
