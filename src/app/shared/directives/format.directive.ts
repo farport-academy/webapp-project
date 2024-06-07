@@ -1,4 +1,4 @@
-import { Directive, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { EssentiaDirective } from '../core/essentialDirective';
 
 @Directive({

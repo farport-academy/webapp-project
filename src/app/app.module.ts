@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PagesModule } from './pages/pages.module';
+import { API_URL } from './config/tokens';
 
 
 
@@ -21,6 +22,12 @@ import { PagesModule } from './pages/pages.module';
     BrowserModule,
     HttpClientModule,
     PagesModule
+  ],
+  providers: [
+    {
+      provide: API_URL,
+      useValue: 'https://dummyjson.com'
+    }
   ],
   bootstrap: [AppComponent]
 })
