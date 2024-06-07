@@ -35,4 +35,4 @@ const importExports = [
   ],
   exports: importExports
 })
-export class ComponentsModule { }
+export class SharedModule { }

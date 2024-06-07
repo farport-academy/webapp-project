@@ -5,7 +5,7 @@ import { Observable, map } from 'rxjs';
 import { SemaphoreComponent } from '../../../shared/components/semaphore/semaphore.component';
 import { Recipe } from '../../models/recipe';
 import { RouterModule } from '@angular/router';
-import { ComponentsModule } from '../../../shared/shared.module';
+import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
   selector: 'app-recipes',

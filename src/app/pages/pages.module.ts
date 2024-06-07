@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { ComponentsModule } from '../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
@@ -17,7 +17,7 @@ const components = [
   declarations:components ,
   imports: [
     CommonModule,
-    ComponentsModule,
+    SharedModule,
     NgOptimizedImage
   ],
   exports: components
