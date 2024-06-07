@@ -40,43 +40,37 @@ export class HomeComponent {
     },
   ];
 
-  counter: number | unknown = 0
+  counter$: Observable<any> = new Observable((subscriber) => {
+    let counter = 0;
+    const intervalId = setInterval(() => {
+      console.log(counter);
+      subscriber.next(counter++);
+    }, 1000);
+    // letto solo all'unsubscribe
+    return () => {
+      clearInterval(intervalId);
+    };
+    // subscriber.complete()
+  });
 
-
+  counter!:number
 
   ngOnInit() {
-    const observable = new Observable(
-      subscriber => {
-        let counter = 0
-        setInterval(
-          () =>{
-            subscriber.next(counter++)
-          }, 1000
-        )
-        // subscriber.complete()
-      }
-    )
 
-    // mi sottorcrivo all'observable
-    observable.pipe(
-      takeUntil(this.destroy)
-     
-    ).subscribe(
-      res =>{
-        this.counter = res
-      }
-    )
+    // this.counter$.pipe(
+    //   takeUntil(this.destroy)
+    // ).subscribe(res => {
+    //   this.counter = res
+    // })
+    // const source = of(1, 2, 3, 4, 5);
+    // const example = source.pipe(map((val) => val * 2));
 
-  const source = of(1, 2, 3, 4, 5);
-  const example = source.pipe(map(val => val * 2));
-
-example.subscribe(val => console.log(val));
-
+    // example.subscribe((val) => console.log(val));
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     // emetto il valore al destroy
-    this.destroy.next(true)
+    this.destroy.next(true);
   }
 
   trackById(index: number, item: TaskItem) {
