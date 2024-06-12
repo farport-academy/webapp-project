@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { LayoutComponent } from './shared/components/layout/layout.component';
-import { SharedModule } from './shared/shared.module';
+
 import { MenuItem } from './shared/models/menu';
+import { MenuComponent } from './shared/components/menu/menu.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  standalone: true,
+  imports: [
+    LayoutComponent,
+    MenuComponent,
+    RouterModule
+  ],
   styleUrl: './app.component.scss',
 })
 export class AppComponent {

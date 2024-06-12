@@ -5,12 +5,19 @@ import { Observable, map } from 'rxjs';
 import { SemaphoreComponent } from '../../../shared/components/semaphore/semaphore.component';
 import { Recipe } from '../../models/recipe';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from '../../../shared/shared.module';
 import { RecipesService } from '../../../data/services/recipes.service';
+import { ButtonComponent } from '../../../shared/components/button/button.component';
 
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    SemaphoreComponent,
+    ButtonComponent
+  ],
   styleUrl: './recipes.component.scss'
 })
 export class RecipesComponent {

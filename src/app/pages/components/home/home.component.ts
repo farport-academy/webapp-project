@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Observable, Subject, map, of, takeUntil } from 'rxjs';
 
@@ -9,6 +10,8 @@ type TaskItem = {
 
 @Component({
   selector: 'app-home',
+  standalone: true,
+  imports:[CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
