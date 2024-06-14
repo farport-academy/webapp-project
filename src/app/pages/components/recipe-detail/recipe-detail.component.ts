@@ -28,6 +28,7 @@ export class RecipeDetailComponent {
 
 
   id = this.activatedRoute.snapshot.params['id']
+
   recipe: Observable<Recipe> = this.recipesService.getRecipe(this.id)
   
   imageSizes= {
