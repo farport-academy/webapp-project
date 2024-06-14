@@ -1,9 +1,10 @@
 <h1>Home</h1>
-{{counter$ | async}}
+{{ counter$ | async }}
 <!-- {{counter}} -->
 <p>
   Lorem ipsum dolor <i appFormat>100000.24455645</i>
-    <b appHighlight color="green" tooltip="testo del tooltip">sit amet consectetur</b
+  <b appHighlight color="green" tooltip="testo del tooltip"
+    >sit amet consectetur</b
   >, adipisicing elit. Error fugiat corporis fuga odio architecto quam
   aspernatur aliquam, corrupti voluptas, non labore id laboriosam. Quo dolorem
   laboriosam maxime ad recusandae a.
@@ -51,3 +52,40 @@ $last, odd = $odd ){
   </ul>
 </div>
 <ng-template #noItems> non ci sono elementi </ng-template>
+
+{{ today | date : "long" }}
+<hr />
+<p>B: {{ "12.1" | currency : "JPY" : "symbol" : "1.3-3" }}</p>
+<p>B: {{ "12.1" | number : "5.3-3" }}</p>
+<p>B: {{ "12.1" | percent : "5.3-3" }}</p>
+
+<pre>
+{{
+  {
+    id: 1,
+    name: "ciccio", 
+    children:[
+      'test1',
+      'test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1',
+    ]
+  } | json
+}}
+</pre>
+
+<hr>
+
+{{ 'ciao' | reverse : '!!!!' }}
+
+{{ 12312312.12332 | customCurrency : 4}}
+
+
+{{
+  {
+    id: 1,
+    name: "ciccio", 
+    children:[
+      'test1',
+      'test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1','test1',
+    ]
+  } | objToStrArr | json
+}}

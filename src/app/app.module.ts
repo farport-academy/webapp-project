@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { AppComponent } from './app.component';
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
@@ -9,8 +9,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { PagesModule } from './pages/pages.module';
 import { API_URL } from './config/tokens';
 
+import localeIt from '@angular/common/locales/it';
+registerLocaleData(localeIt);
 
-
+// import localeEs from '@angular/common/locales/es'
+// registerLocaleData(localeEs)
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -27,6 +30,10 @@ import { API_URL } from './config/tokens';
     {
       provide: API_URL,
       useValue: 'https://dummyjson.com'
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: 'it-IT'
     }
   ],
   bootstrap: [AppComponent]

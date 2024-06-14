@@ -8,6 +8,9 @@ import { ButtonComponent } from './components/button/button.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FormatDirective } from './directives/format.directive';
 import { HighlightDirective } from './directives/highlight.directive';
+import { ReversePipe } from './pipes/reverse.pipe';
+import { CustomCurrencyPipe } from './pipes/custom-currency.pipe';
+import { ObjToStrArrPipe } from './pipes/obj-to-str-arr.pipe';
 
 const components = [
   LayoutComponent,
@@ -21,9 +24,16 @@ const directives = [
   FormatDirective
 ]
 
+const pipes = [
+  ReversePipe,
+  CustomCurrencyPipe,
+  ObjToStrArrPipe
+]
+
 const importExports = [
   ...components,
-  ...directives
+  ...directives,
+  ...pipes
 ]
 
 @NgModule({

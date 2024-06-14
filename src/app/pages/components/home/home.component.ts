@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Observable, Subject, map, of, takeUntil } from 'rxjs';
+import { ReversePipe } from '../../../shared/pipes/reverse.pipe';
 
 type TaskItem = {
   id: number;
@@ -7,10 +8,13 @@ type TaskItem = {
   done: boolean;
 };
 
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
+  providers: [ReversePipe]
 })
 export class HomeComponent {
   a: number = 6;
@@ -55,7 +59,20 @@ export class HomeComponent {
 
   counter!:number
 
+  today: Date = new Date()
+
+  reversPipe = inject(ReversePipe)
+  reversedValue: string = ''
+
+  reverseString(val:string):string|unknown{
+    return this.reversPipe.transform(val, '🚀')
+  }
+
+  
+
   ngOnInit() {
+
+  
 
     // this.counter$.pipe(
     //   takeUntil(this.destroy)
