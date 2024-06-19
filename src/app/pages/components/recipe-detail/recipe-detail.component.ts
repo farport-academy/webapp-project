@@ -28,9 +28,16 @@ export class RecipeDetailComponent {
 
 
   id = this.activatedRoute.snapshot.params['id']
-
+  q = this.activatedRoute.snapshot.queryParams['q']
+  queryPArams = this.activatedRoute.snapshot.queryParamMap
   recipe: Observable<Recipe> = this.recipesService.getRecipe(this.id)
   
+  constructor() {
+    console.log('/:id', this.id)
+    console.log('/:id?q', this.q)
+    console.log('tutti i parametri', this.queryPArams)
+  } 
+
   imageSizes= {
     width: 400,
     height: 400

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 
 import { MenuItem } from './shared/models/menu';
@@ -32,6 +32,14 @@ export class AppComponent {
       label: 'Recipes'
     }
   ]
+
+  route = inject(ActivatedRoute)
+
+  ngOnInit(){
+    this.route.queryParamMap.subscribe((res)=>{
+      console.log(res)
+    })
+  }
 
 
 }
