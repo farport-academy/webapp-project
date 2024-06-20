@@ -1,5 +1,5 @@
 <h1>Home</h1>
-{{counter$ | async}}
+<!-- {{counter$ | async}} -->
 <!-- {{counter}} -->
 <p>
   Lorem ipsum dolor <i appFormat>100000.24455645</i>
@@ -51,3 +51,10 @@ $last, odd = $odd ){
   </ul>
 </div>
 <ng-template #noItems> non ci sono elementi </ng-template>
+
+<app-lifecycle [count]="counter$" title="titolo test">
+  @if((counter$ | async) > 10){
+    <button (click)="stopEmission()">stop emission</button>
+  }
+  
+</app-lifecycle>

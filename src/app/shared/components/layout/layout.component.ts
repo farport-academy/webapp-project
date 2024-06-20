@@ -15,5 +15,6 @@ export class LayoutComponent {
       return this.date
     }
 
+    ngOnInit(){}
 
 }

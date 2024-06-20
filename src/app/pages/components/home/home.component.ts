@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Observable, Subject, map, of, takeUntil } from 'rxjs';
+import { Observable, Subject, map, of, switchMap, takeUntil } from 'rxjs';
+import { LifecycleComponent } from '../../../shared/components/lifecycle/lifecycle.component';
 
 type TaskItem = {
   id: number;
@@ -11,7 +12,7 @@ type TaskItem = {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports:[CommonModule],
+  imports:[CommonModule, LifecycleComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -46,7 +47,7 @@ export class HomeComponent {
   counter$: Observable<any> = new Observable((subscriber) => {
     let counter = 0;
     const intervalId = setInterval(() => {
-      console.log(counter);
+      // console.log(counter);
       subscriber.next(counter++);
     }, 1000);
     // letto solo all'unsubscribe
@@ -54,7 +55,9 @@ export class HomeComponent {
       clearInterval(intervalId);
     };
     // subscriber.complete()
-  });
+  }).pipe(
+    takeUntil(this.destroy)
+  );
 
   counter!:number
 
@@ -69,6 +72,16 @@ export class HomeComponent {
     // const example = source.pipe(map((val) => val * 2));
 
     // example.subscribe((val) => console.log(val));
+  }
+  
+  stopEmission(){
+    this.counter$ = this.counter$.pipe(
+      takeUntil( this.destroy),
+      switchMap(
+        res => of(res + 100)
+      )
+    )
+    this.destroy.next(true)
   }
 
   ngOnDestroy() {

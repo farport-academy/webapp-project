@@ -30,6 +30,10 @@ export class AppComponent {
     {
       url:'/recipes',
       label: 'Recipes'
+    },
+    {
+      url: '/contacts',
+      label: 'Contacts'
     }
   ]
 
