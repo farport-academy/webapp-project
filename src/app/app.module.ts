@@ -5,9 +5,10 @@ import { RouterOutlet, RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { PagesModule } from './pages/pages.module';
 import { API_URL } from './config/tokens';
+import { environment } from '../environments/environment';
 
 
 
@@ -20,14 +21,15 @@ import { API_URL } from './config/tokens';
     RouterModule,
     AppRoutingModule,
     BrowserModule,
-    HttpClientModule,
+    
     PagesModule
   ],
   providers: [
     {
       provide: API_URL,
-      useValue: 'https://dummyjson.com'
-    }
+      useValue: environment.apiUrl
+    },
+    provideHttpClient(),
   ],
   bootstrap: [AppComponent]
 })

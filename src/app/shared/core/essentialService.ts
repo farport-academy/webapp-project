@@ -18,10 +18,12 @@ export class EssentialService {
     }
 
     // metodo che permette di chiamare gli endpoint api
-    protected apiCall<T>(options: ApiCallParams):Observable<T>{
+    protected apiCall<T>(params: ApiCallParams):Observable<T>{
+ 
         return this.http.request<T>(
-            options.type,
-            options.url
+            params.type,
+            params.url,
+            params.options
         ).pipe(
             catchError(err => {
                 alert(err)
