@@ -1,11 +1,30 @@
 
 
+<h1>Recipes List</h1>
+
+<form [formGroup]="searchForm" (ngSubmit)="searchRecipes()">
+    <fieldset>
+        <input formControlName="query" type="text">
+        <button type="submit" [disabled]="!searchForm.valid">
+            Cerca
+        </button>
+    </fieldset>
+</form>
+
+@if(searchActive){
+    <button (click)="resetSearch()">Resetta Ricerca</button>
+}
+
 @for(recipe of recipes | async; track recipe.id){
 <article class="recipe">
-
- 
     <h1>{{ recipe.name }}</h1>
     calorie: <app-semaphore [amount]="recipe.caloriesPerServing" />
     <app-button [url]="[recipe.id]">Leggi il dettaglio</app-button>
 </article>
+} @empty {
+    @if(searchActive){
+        <h2>La ricerca non ha prodotto risultati</h2>
+    } @else {
+        ...loading
+    }
 }
