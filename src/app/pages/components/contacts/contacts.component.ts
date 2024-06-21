@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { EssentialComponent } from '../../../shared/core/essentialComponent';
-import { takeUntil } from 'rxjs';
+import { repeat, takeUntil } from 'rxjs';
 import { FormComponent, FormConfig } from '../../../shared/components/form/form.component';
+import { asyncForbiddenNameValidator, confirmPasswordValidator, forbiddenNameValidator } from '../../../shared/core/validators';
 
 @Component({
   selector: 'app-contacts',
@@ -14,14 +15,15 @@ import { FormComponent, FormConfig } from '../../../shared/components/form/form.
 })
 export class ContactsComponent extends EssentialComponent {
 
-
+  forbiddenNames = ['Abruzzo', 'Lazio', 'Calabria']
 
   formConfig: FormConfig[] = [
     {
       name: 'name',
       label: 'Nome',
       type: 'text',
-      validators: [Validators.required]
+      validators: [Validators.required],
+      asyncValidators: [asyncForbiddenNameValidator(this.forbiddenNames)]
     }, 
     {
       name: 'secondname',
@@ -42,6 +44,18 @@ export class ContactsComponent extends EssentialComponent {
       validators: [Validators.required, Validators.email]
     },
     {
+      name: 'password',
+      label: 'La tua password',
+      type: 'password',
+      validators: [Validators.required]
+    },
+    {
+      name: 'secondaPassword',
+      label: 'RipetiPassword',
+      type: 'password',
+      validators: [Validators.required]
+    },
+    {
       name: 'telephone',
       label: 'Numero di telefono',
       type: 'text',
@@ -55,5 +69,7 @@ export class ContactsComponent extends EssentialComponent {
       validators: [Validators.minLength(10),Validators.maxLength(100)]
     }
   ]
+
+  globalValidator = confirmPasswordValidator('password', 'secondaPassword')
 
 }

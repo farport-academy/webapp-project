@@ -1,5 +1,20 @@
 <!-- {{ control | json}} -->
+
+@if( globalErrors?.errors?.['passwordDidntMatch']?.connectedFields.includes(fieldName)){
+
+  <p>
+    Le password non corrispondono
+  </p>
+}
+
+
 @if( !control?.valid && (control?.dirty || control?.touched)){
+   
+    @if(control?.pending){
+        <p>
+            ... stiamo effettuando il controllo
+        </p>
+    }
 
     @if( control?.errors?.['required']){
         <p>
@@ -10,6 +25,12 @@
     @if( control?.errors?.['email']){
         <p>
             Deve Essere una mail valida
+        </p>
+    }
+
+    @if (control?.errors?.['forbiddenName']){
+        <p>
+            {{ control?.errors?.['forbiddenName'].value }} non è nun nome consentito
         </p>
     }
     
@@ -29,6 +50,10 @@
             ti mancano {{control?.errors?.['minlength'].requiredLength - control?.errors?.['minlength'].actualLength}}
             caratteri
         </p>
+    }
+
+    @if( control?.errors?.['passwordDidntMatch']){
+  
     }
 
 

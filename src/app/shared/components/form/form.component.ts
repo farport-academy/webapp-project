@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, ValidatorFn } from '@angular/forms';
+import { AsyncValidatorFn, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn } from '@angular/forms';
 import { EssentialComponent } from '../../core/essentialComponent';
 import { takeUntil } from 'rxjs';
 import { ErrorComponent } from '../error/error.component';
@@ -10,7 +10,8 @@ export interface FormConfig {
   name: string,
   label: string,
   type: string,
-  validators: ValidatorFn | ValidatorFn[],
+  validators?: ValidatorFn | ValidatorFn[],
+  asyncValidators?: AsyncValidatorFn | AsyncValidatorFn[],
   errorMessage?: string
 }
 
@@ -24,25 +25,34 @@ export interface FormConfig {
 export class FormComponent extends EssentialComponent {
 
   @Input() formConfig!: FormConfig[] 
+  @Input() globalValidators!: ValidatorFn | ValidatorFn[] | AsyncValidatorFn | AsyncValidatorFn[] | null
 
   form!:FormGroup
 
   private generateForm(formConfig: FormConfig[]){
     const configOutput : Record<any,FormControl> = {}
     formConfig.forEach( (item) =>{
-      configOutput[item.name] =  new FormControl('', item.validators)
+      configOutput[item.name] =  new FormControl('', item.validators, item.asyncValidators)
     })
     return configOutput
   }
 
   ngOnInit(): void {
-      this.form?.valueChanges.pipe(
-        takeUntil(this.destroy$)
-      ).subscribe( (values) => {
-        console.log(values)
-      })
-      console.log(this.form)
-      this.form = new FormGroup(this.generateForm(this.formConfig))
+
+
+      this.form = new FormGroup(
+          this.generateForm(this.formConfig),
+          {
+            validators: this.globalValidators
+          }
+        )
+
+        this.form?.valueChanges.pipe(
+          takeUntil(this.destroy$)
+        ).subscribe( (values) => {
+          console.log(values)
+          console.log(this?.form?.errors)
+        })
   }
 
   submit(){

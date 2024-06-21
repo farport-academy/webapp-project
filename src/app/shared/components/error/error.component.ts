@@ -12,4 +12,6 @@ import { AbstractControl, FormControl } from '@angular/forms';
 export class ErrorComponent {
   @Input() control!: AbstractControl<any, any> | null
   @Input() errorMessage!: string | undefined
+  @Input() globalErrors!: AbstractControl<any, any> | null
+  @Input() fieldName!: string | null
 }
