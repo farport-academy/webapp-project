@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AsyncValidatorFn, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn } from '@angular/forms';
 import { EssentialComponent } from '../../core/essentialComponent';
 import { takeUntil } from 'rxjs';
@@ -27,6 +27,7 @@ export class FormComponent extends EssentialComponent {
   @Input() formConfig!: FormConfig[] 
   @Input() globalValidators!: ValidatorFn | ValidatorFn[] | AsyncValidatorFn | AsyncValidatorFn[] | null
 
+  @Output() onSubmit = new EventEmitter()
   form!:FormGroup
 
   private generateForm(formConfig: FormConfig[]){
@@ -56,7 +57,7 @@ export class FormComponent extends EssentialComponent {
   }
 
   submit(){
-    console.log( this.form.value)
+    this.onSubmit.emit(this.form.value)
     this.form.reset()
   }
 

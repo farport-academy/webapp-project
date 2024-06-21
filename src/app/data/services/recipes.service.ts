@@ -32,7 +32,7 @@ export class RecipesService extends EssentialService {
     return this.extractRecipes(
       this.apiCall<RecipeResponse>({
         type: 'GET',
-        url: this.apiUrl + 'search',
+        url: this.apiUrl + '/search',
         options: {
           params: new HttpParams().set('q', query),
         },

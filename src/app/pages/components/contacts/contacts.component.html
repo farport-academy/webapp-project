@@ -1,6 +1,6 @@
 <h1>Contattaci</h1>
 
-<app-form [formConfig]="formConfig" [globalValidators]="globalValidator">
+<app-form [formConfig]="formConfig" (onSubmit)="submitUserCreation($event)">
 <!-- TEMPLATE DRIVEN FORM -->
 <!-- <form #contactForm="ngForm" (ngSubmit)="submit(contactForm)">
     <fieldset>

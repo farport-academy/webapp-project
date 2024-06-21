@@ -32,7 +32,10 @@ export class RecipesComponent {
   recipes: Observable<Recipe[]> = this.recipesService.getRecipes();
 
   searchForm = new FormGroup({
-    query: new FormControl('', Validators.required),
+    query: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^[a-zA-Z0-9\s]+$/),
+    ]),
   });
   searchActive: boolean = false;
 
